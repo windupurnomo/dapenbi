@@ -1,0 +1,25 @@
+{
+  "name": "dapenbi",
+  "version": "1.0.0",
+  "description": "Dana Pensiun BI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "java",
+    "spring",
+    "spring",
+    "boot",
+    "angularjs"
+  ],
+  "author": "Windu Purnomo",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.0",
+    "angular-ui-router": "^1.0.18",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3"
+  }
+}

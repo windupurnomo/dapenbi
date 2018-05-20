@@ -1,0 +1,14 @@
+<!-- <div class="row" ng-init="menu=1">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button ui-sref="employee.general({id:0})" class="btn btn-success" ng-class="{active:menu==1}" ng-click="menu=1">Informasi Umum</button>
+        <button ui-sref="employee.family({id:0})" class="btn btn-success" ng-class="{active:menu==2}" ng-click="menu=2">Informasi Keluarga</button>
+        <button ui-sref="employee.address({id:0})" class="btn btn-success" ng-class="{active:menu==3}" ng-click="menu=3">Informasi Alamat</button>
+    </div>
+</div> -->
+<div class="row" style="margin-top: 10px">
+    <div class="card" style="width: 100%;">
+        <div class="card-body">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>

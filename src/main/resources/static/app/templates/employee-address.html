@@ -1,0 +1,43 @@
+<h4>Data Alamat Karyawan: {{employee.name}}</h4>
+<hr/>
+<form class="row" ng-submit="save()">
+    <div class="col">
+        <div class="form-group">
+            <label>Provinsi</label>
+            <select class="form-control" ng-model="form.provinsi" ng-options="p.id as p.name for p in provinsis" ng-change="reloadKabupaten()"></select>
+        </div>
+        <div class="form-group">
+            <label>Kabupaten</label>
+            <select class="form-control" ng-model="form.kabupaten" ng-options="p.id as p.name for p in kabupatens" ng-change="reloadKecamatan()"></select>
+        </div>
+        <div class="form-group">
+            <label>Kecamatan</label>
+            <select class="form-control" ng-model="form.kecamatan" ng-options="p.id as p.name for p in kecamatans" ng-change="reloadKelurahan()"></select>
+        </div>
+        <div class="form-group">
+            <label>Kelurahan</label>
+            <select class="form-control" ng-model="form.kelurahan" ng-options="p.id as p.name for p in kelurahans"></select>
+        </div>
+    </div>
+    <div class="col">
+        <div class="form-group">
+            <label class="control-label">RT</label>
+            <input type="text" class="form-control" ng-model="form.rt">
+        </div>
+        <div class="form-group">
+            <label class="control-label">RW</label>
+            <input type="text" class="form-control" ng-model="form.rw">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Kode Pos</label>
+            <input type="text" class="form-control" ng-model="form.posCode">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Alamat</label>
+            <textarea type="text" class="form-control" ng-model="form.address"></textarea>
+        </div>
+        <div class="pull-right">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+</form>

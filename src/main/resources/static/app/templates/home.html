@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col">
+    	<h4>Simulasi Manfaat Pensiun (MP)</h4>
+        <form>
+            <div class="form-group">
+                <label>Karyawan</label>
+                <select class="form-control" ng-model="employee" ng-options="p as p.name for p in employees"></select>
+            </div>
+            <div class="form-group">
+                <label>MPS (%)</label>
+                <input class="form-control" type="number" ng-model="form.mpsPercentage">
+            </div>
+            <div class="form-group">
+                <label>MPS (Rp)</label>
+                <input class="form-control" type="number" ng-model="form.mpsRupiah">
+            </div>
+            <div class="form-group">
+                <label></label>
+                <button class="btn btn-success">Hitung MP</button>
+                <button class="btn btn-danger" ng-click="clear()">Bersihkan</button>
+            </div>
+            <center>
+            	<h1>Rp 1.111.11</h1>
+            	<small>Manfaat Pensiun (MP)</small>
+            </center>
+        </form>
+    </div>
+    <div class="col">
+    	<h4>Data Karyawan</h4>
+        <small ng-hide="employee"><i>belum pilih karyawan</i></small>
+    	<table class="table table-stripped" ng-show="employee">
+    		<tr>
+                <td>NIP</td>
+                <td>:</td>
+                <td>{{employee.nip}}</td>
+            </tr>
+            <tr>
+    			<td>Nama</td>
+    			<td>:</td>
+    			<td>{{employee.name}}</td>
+    		</tr>
+    		<tr>
+    			<td>Jenis Kelamin</td>
+    			<td>:</td>
+    			<td>{{employee.sex == 0 ? 'P' : 'L'}}</td>
+    		</tr>
+    		<tr>
+    			<td>Tanggal Lahir</td>
+    			<td>:</td>
+    			<td>{{employee.birthDate | date:'dd/MM/yyyy'}}</td>
+    		</tr>
+    		<tr>
+    			<td>Tanggal Mulai Kerja</td>
+    			<td>:</td>
+    			<td>{{employee.startDate | date:'dd/MM/yyyy'}}</td>
+    		</tr>
+    		<tr>
+    			<td>Tanggal Berhenti Kerja</td>
+    			<td>:</td>
+    			<td>{{employee.finishDate | date:'dd/MM/yyyy'}}</td>
+    		</tr>
+    		<tr>
+    			<td>Gaji</td>
+    			<td>:</td>
+    			<td>{{employee.salary|number:0}}</td>
+    		</tr>
+    	</table>
+    </div>
+</div>

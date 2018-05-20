@@ -1,0 +1,82 @@
+<div ng-show="showForm">
+    <h4>Form Keluarga {{employee.name}}</h4>
+    <form class="row">
+        <div class="col">
+            <div class="form-group">
+                <label>Nama</label>
+                <input type="text" class="form-control" ng-model="form.name">
+                <small class="form-text text-muted">&nbsp; </small>
+            </div>
+            <div class="form-group">
+                <label>Tanggal Lahir</label>
+                <input type="date" class="form-control" ng-model="form.birthDate">
+            </div>
+            <div class="form-group">
+                <label>Tanggal Cerai</label>
+                <input type="date" class="form-control" ng-model="form.divorceDate">
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label class="control-label">Jenis Kelamin</label>
+                <label class="form-check-label col">
+                    <input type="radio" class="form-check-input" ng-model="form.sex" ng-value="1"> Laki Laki
+                </label>
+                <label class="form-check-label col">
+                    <input type="radio" class="form-check-input" ng-model="form.sex" ng-value="0"> Perempuan
+                </label>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Status Hubungan Keluarga</label>
+                <label class="form-check-label col">
+                    <input type="radio" class="form-check-input" ng-model="form.relation" ng-value="0"> Isteri
+                </label>
+                <label class="form-check-label col">
+                    <input type="radio" class="form-check-input" ng-model="form.relation" ng-value="1"> Anak Pertama
+                </label>
+                <label class="form-check-label col">
+                    <input type="radio" class="form-check-input" ng-model="form.relation" ng-value="2"> Anak Kedua
+                </label>
+            </div>
+            <div class="form-group">
+                <label></label>
+                <!-- <input type="number" class="form-control" ng-model="form.salary"> -->
+            </div>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-primary btn-sm" ng-click="save()">Simpan</button>
+                <button type="submit" class="btn btn-warning btn-sm" ng-click="showForm = false">Cancel</button>
+            </div>
+        </div>
+    </form>
+    <hr/>
+</div>
+
+<div ng-init="showForm = false">
+    <h4>Data Keluarga {{employee.name}}</h4>
+    <button class="btn btn-success btn-sm" ng-click="add()">Tambah Keluarga</button>
+    <table class="table table-hover table-striped">
+        <thead>
+            <tr>
+                <th>Nama</th>
+                <th>JK</th>
+                <th>Tgl Lahir</th>
+                <th>Hubungan</th>
+                <th>Tgl Cerai</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="f in families">
+                <td>{{f.name}}</td>
+                <td>{{e.sex == 0 ? 'P' : 'L'}}</td>
+                <td>{{f.birthDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{f.relation}}</td>
+                <td>{{f.birthDate | date:'dd/MM/yyyy'}}</td>
+                <td>
+                    <button class="btn btn-primary btn-sm" ng-click="update(f.id)">Update</button>
+                    <button class="btn btn-danger btn-sm" ng-click="delete(f.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

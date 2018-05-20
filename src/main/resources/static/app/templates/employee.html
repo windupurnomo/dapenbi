@@ -1,0 +1,32 @@
+<div class="row" style="margin-bottom: 10px">
+    <a href ui-sref="employee.general({id:0})" class="btn btn-primary">Tambah Data Karyawan</a>
+</div>
+
+<div class="row">
+    <table class="table table-hover table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">NIP</th>
+                <th scope="col">Nama</th>
+                <th scope="col">JK</th>
+                <th scope="col">Status</th>
+                <th scope="col">Tgl Lahir</th>
+                <th scope="col">Tgl Mulai</th>
+                <th scope="col">Tgl Selesai</th>
+                <th scope="col">Gaji</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in employees" ng-click="goDetail(e.nip)">
+                <th scope="row">{{e.nip}}</th>
+                <td>{{e.name}}</td>
+                <td>{{e.sex == 0 ? 'P' : 'L'}}</td>
+                <td>{{e.status == 1 ? 'K' : 'TK'}}</td>
+                <td>{{e.birthDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{e.startDate | date:'dd/MM/yyyy'}}</td>
+                <td>{{e.finishDate | date: 'dd/MM/yyyy'}}</td>
+                <td align="right">{{e.salary | number:0}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
