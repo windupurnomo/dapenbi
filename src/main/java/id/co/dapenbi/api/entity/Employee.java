@@ -1,7 +1,13 @@
 package id.co.dapenbi.api.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
 import java.util.Date;
 
 @Entity
@@ -15,6 +21,15 @@ public class Employee {
     private Date startDate;
     private Date finishDate;
     private double salary;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Transient
+    private String type;
+    @JsonInclude
+    @Transient
+    private String retireAge;
+    @JsonInclude
+    @Transient
+    private String workAge;
 
     public String getNip() {
         return nip;
@@ -78,5 +93,33 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getType() {
+        Period c = getPeriod(getBirthDate(), getFinishDate());
+        int usiaPensiun = (c.getMonths() + 1) + c.getYears() * 12;
+        if (usiaPensiun <= 46 * 12) return "Pensiun Ditunda";
+        else if (usiaPensiun >= 46 * 12 + 1 && usiaPensiun <= 55 * 12 + 11) return "Pensiun Dipercepat";
+        else return "Pensiun Normal";
+    }
+
+    public String getRetireAge() {
+        Period c = getPeriod(getBirthDate(), getFinishDate());
+        int month = (c.getMonths() + 1);
+        int year = c.getYears();
+        return String.format("%02d%02d", year, month);
+    }
+
+    public String getWorkAge() {
+        Period c = getPeriod(getStartDate(), getFinishDate());
+        int month = (c.getMonths() + 1);
+        int year = c.getYears();
+        return String.format("%02d%02d", year, month);
+    }
+
+    private Period getPeriod(Date a, Date b) {
+        LocalDate x = a.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate y = b.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        return Period.between(x, y);
     }
 }

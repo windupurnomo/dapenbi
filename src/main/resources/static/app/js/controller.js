@@ -20,7 +20,18 @@ var getAddress = function($http, $scope, url, employeeId) {
     $http.get(url + "/employee/" + employeeId).then(function(res) {
         $scope.employee = res.data;
         $http.get(url + "/employee-address/employee/" + employeeId).then(function(res) {
-            $scope.form = res.data;
+            if (res.data == "") $scope.form = {};
+            else {
+                $scope.form = res.data;
+                $http.get("https://api.etanee.id/kelurahan/" + res.data.kelurahan).then(function (res){
+                    $scope.form.provinsi = res.data.kecamatan.kabupaten.provinsi.id;
+                    $scope.reloadKabupaten();
+                    $scope.form.kabupaten = res.data.kecamatan.kabupaten.id;
+                    $scope.reloadKecamatan();
+                    $scope.form.kecamatan = res.data.kecamatan.id;
+                    $scope.reloadKelurahan();
+                })
+            }
             $scope.form.employee = $scope.employee;
         }, function() {})
     }, function() {})

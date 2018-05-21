@@ -20,6 +20,21 @@
                 <button class="btn btn-danger" ng-click="clear()">Bersihkan</button>
             </div>
         </form>
+        <center>
+            <table>
+                <tr>
+                    <td align="center">
+                        <h1>Rp {{result.mp | number:0}}</h1>
+                        <small>Manfaat Pensiun (MP)</small>
+                    </td>
+                    <td>&nbsp; &nbsp;</td>
+                    <td align="center">
+                        <h1>Rp {{result.mps | number:0}}</h1>
+                        <small>Manfaat Pensiun Sekaligus (MPS)</small>
+                    </td>
+                </tr>
+            </table>
+        </center>
     </div>
     <div class="col">
         <h4>Data Karyawan</h4>
@@ -60,21 +75,21 @@
                 <td>:</td>
                 <td>{{employee.salary|number:0}}</td>
             </tr>
+            <tr>
+                <td>Jenis Pensiun</td>
+                <td>:</td>
+                <td>{{employee.type}}</td>
+            </tr>
+            <tr>
+                <td>Masa Kerja</td>
+                <td>:</td>
+                <td>{{employee.workAge}}</td>
+            </tr>
+            <tr>
+                <td>Usia Pada Saat Pensiun</td>
+                <td>:</td>
+                <td>{{employee.retireAge}}</td>
+            </tr>
         </table>
     </div>
 </div>
-<center>
-    <table>
-        <tr>
-            <td align="center">
-                <h1>Rp {{result.mp | number:0}}</h1>
-                <small>Manfaat Pensiun (MP)</small>
-            </td>
-            <td>&nbsp; &nbsp;</td>
-            <td align="center">
-                <h1>Rp {{result.mps | number:0}}</h1>
-                <small>Manfaat Pensiun Sekaligus (MPS)</small>
-            </td>
-        </tr>
-    </table>
-</center>
