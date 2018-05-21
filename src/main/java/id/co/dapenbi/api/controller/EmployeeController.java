@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -44,9 +46,9 @@ public class EmployeeController {
     }
 
     @GetMapping("/mp/{employeeId}")
-    public double countMp(@PathVariable String employeeId,
-                          @RequestParam(required = false) double mpsPercent,
-                          @RequestParam(required = false) double mpsRupiah){
+    public Map countMp(@PathVariable String employeeId,
+                       @RequestParam(required = false) Double mpsPercent,
+                       @RequestParam(required = false) Double mpsRupiah){
         return calculationService.countMP(employeeId, mpsPercent, mpsRupiah);
     }
 

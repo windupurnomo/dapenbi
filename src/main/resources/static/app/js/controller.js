@@ -52,6 +52,27 @@ var ctrlHome = function($scope, $http, url) {
     getEmployees($http, $scope, url);
     $scope.clear = function (){
         $scope.employee = null;
+        $scope.form = {};
+        $scope.result = {};
+    }
+
+    $scope.countMP = function (){
+        var a = url + "/employee/mp/" + $scope.employee.nip;
+        var b = {};
+        if ($scope.form.mpsPercent){
+            b.mpsPercent = $scope.form.mpsPercent;
+        }
+        if ($scope.form.mpsRupiah){
+            b.mpsRupiah = $scope.form.mpsRupiah;
+        }
+        var arr = [];
+        for (var i in b){
+            arr.push(i + "=" + b[i]);
+        }
+        a += "?" + arr.join("&");
+        $http.get(a).then(function (res){
+            $scope.result = res.data;
+        })
     }
 }
 

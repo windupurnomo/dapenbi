@@ -64,17 +64,4 @@ public class EmployeeService {
             return new ZCodeResponse("Tanggal lahir harus diisi", HttpStatus.BAD_REQUEST);
         return null;
     }
-
-    public double countMP(String employeeId, String mpsPercent, String mpsRupiah) {
-        double fpr = 0;
-        int type = 1;
-        double mp = 0;
-        if (mpsPercent != null){
-
-        }
-        if (mpsRupiah != null){
-
-        }
-        return 0;
-    }
 }
